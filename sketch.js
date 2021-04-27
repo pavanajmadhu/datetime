@@ -23,6 +23,9 @@ function setup(){
 function draw(){
     if(backgroundImg)
     background(backgroundImg);
+    textSize(20);
+    text("Time  "+min,100,20)
+
 
     // add condition to check if any background image is there to add
 
@@ -36,17 +39,21 @@ function draw(){
 
 async function getBackgroundImg(){
 
-    var respond= fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
+    var respond=await fetch("https://worldtimeapi.org/api/timezone/europe/london")
     // write code to fetch time from API
     var respondJson=await respond.json();
 
 
     //change the data in JSON format
-    var Dateandtime = respondJson.DateTime;
+    var Dateandtime = respondJson.datetime;
 
 
     // write code slice the datetime
-    var hour= Dateandtime.slice(11,13);
+   // hourd= Dateandtime.slice(14,16);
+     hour= Dateandtime.slice(11,13);
+     min= Dateandtime.slice(11,16);
+
+    
 
 
 
